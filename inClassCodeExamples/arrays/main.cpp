@@ -1,6 +1,7 @@
 /**
  * CS 3100
  * In class C++ examples
+ * 8/27/2025
  * from https://en.cppreference.com/w/cpp/language/array.html
  *  A declaration of the form T a[N]; declares a as an array object that consists of N
  *  contiguously allocated objects of type T

@@ -1,3 +1,10 @@
+/**
+ * CS 3100
+ * In class code examples
+ * 8/27/2025
+ * This file has examples for using cout, types like int, double, float, char, bool, and the const keyword
+ * And it uses preprocessor directives such as #include and #define
+ */
 #include <iostream>
 #include <string>
 
