@@ -11,7 +11,7 @@
 using namespace std;
 
 int main() {
-    const int SIZE = 5;
+    int SIZE = 5;
     int arr[SIZE]; // we will discuss this, but SIZE ***MUST*** be a constant (or int literal)
 
     // before assigning indexes, the array will be full of garbage values
@@ -21,7 +21,7 @@ int main() {
 
     // I can make the loop go more times than SIZE
     // C++ doesn't stop me from accessing off the end of the array
-    for (int i = 0; i < SIZE; i++) {
+    for (int i = 0; i < SIZE + 4; i++) {
         cout << arr[i] << endl;
     }
 
