@@ -25,5 +25,17 @@ int main() {
         cout << arr[i] << endl;
     }
 
+    // initialize array with given values
+    int arrInit[] = {4, 8, 15, 16, 23, 42};
+    for (int i = 0; i < 6; i++) {
+        cout << arrInit[i] << endl;
+    }
+
+    // initialize array with 6 zeros
+    int arrZeros[6] = {0};
+    for (int i = 0; i < 6; i++) {
+        cout << arrZeros[i] << endl;
+    }
+
     return 0;
 }
