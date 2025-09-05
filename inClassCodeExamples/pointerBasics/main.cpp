@@ -54,5 +54,10 @@ int main() {
     *(arrPtr + 2) = 8; // same as arr[2] = 8
     arrPtr[1] = 16; // we can use arrPtr like an array, that might come in handy...
 
+    arrPtr += 1;
+    *(arrPtr + 1) = 23;
+
+    //arr += 2; // can't change what arr is
+
     return 0;
 }
