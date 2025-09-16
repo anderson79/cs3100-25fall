@@ -3,4 +3,8 @@ project(functions)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(functions main.cpp)
+add_executable(functions
+        main.cpp
+        funcs.h
+        funcs.cpp
+)
