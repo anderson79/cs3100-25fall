@@ -19,6 +19,13 @@ public:
     string lname;
     size_t uid; // unsigned int
 
+    // default constructor
+    Student();
+
+    // parameterized constructor
+    Student(string fname, string lname, size_t uid);
+
+
 };
 
 #endif //CLASSES_STUDENT_H

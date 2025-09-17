@@ -15,6 +15,12 @@ int main() {
     Student s1; // create a student object on the stack
                 // after this line, s1 is a valid student
 
+    s1.fname = "James";
+    s1.lname = "Anderson";
+    s1.uid = 481516;
+
+    Student s2("Eloise", "Hawking", 2348108);
+
     cout << "done\n";
     return 0;
 }
