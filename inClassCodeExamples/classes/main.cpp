@@ -11,22 +11,25 @@
 
 using namespace std;
 
-void printStudent(Student s) {
-    cout << s.lname << ", " << s.fname << " UID: " << s.uid << endl;
+void printStudent(const Student& s) {
+    cout << s.getLname() << ", " << s.getFname() << " UID: " << s.getUid() << endl;
 }
 
 int main() {
     Student s1; // create a student object on the stack
     // after this line, s1 is a valid student
 
-    s1.fname = "James";
-    s1.lname = "Anderson";
-    s1.uid = 481516;
+    // using setters to set student data
+    s1.setFname("James");
+    s1.setLname("Anderson");
+    s1.setUid( 1000000000); // invalid UID by calling setUid
 
-    Student s2("Eloise", "Hawking", 2342108);
+    // parameterized constructor will call setUid to check for valid UID
+    Student s2("Eloise", "Hawking", 1000000000);
 
-    printStudent(s1);
-    printStudent(s2);
+    s1.printStudent();
+    s2.printStudent(cout); // we can pass other output streams
+                            // and direct the output to other places
 
     return 0;
 }
