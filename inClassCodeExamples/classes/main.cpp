@@ -11,16 +11,22 @@
 
 using namespace std;
 
+void printStudent(Student s) {
+    cout << s.lname << ", " << s.fname << " UID: " << s.uid << endl;
+}
+
 int main() {
     Student s1; // create a student object on the stack
-                // after this line, s1 is a valid student
+    // after this line, s1 is a valid student
 
     s1.fname = "James";
     s1.lname = "Anderson";
     s1.uid = 481516;
 
-    Student s2("Eloise", "Hawking", 2348108);
+    Student s2("Eloise", "Hawking", 2342108);
 
-    cout << "done\n";
+    printStudent(s1);
+    printStudent(s2);
+
     return 0;
 }

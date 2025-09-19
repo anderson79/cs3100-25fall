@@ -24,8 +24,6 @@ public:
 
     // parameterized constructor
     Student(string fname, string lname, size_t uid);
-
-
 };
 
 #endif //CLASSES_STUDENT_H
