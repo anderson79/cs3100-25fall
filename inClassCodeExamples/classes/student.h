@@ -47,6 +47,10 @@ public:
     void printStudent() const;
     void printStudent(ostream& os) const;
 
+    bool operator==(const Student& other) const;
+
+    friend ostream& operator<<(ostream& os, const Student& student);
+
     // constant used to verify UID is being set to a valid
     // uid with a maximum of 8 digits
     const size_t MAX_UID = 99999999;

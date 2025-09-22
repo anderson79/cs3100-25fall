@@ -113,3 +113,12 @@ void Student::printStudent() const {
 void Student::printStudent(ostream &os) const {
     os << getLname() << ", " << getFname() << " UID: " << getUid() << endl;
 }
+
+bool Student::operator==(const Student& other) const {
+    return getUid() == other.getUid();
+}
+
+ostream& operator<<(ostream& os, const Student& student) {
+    os << student.getLname() << ", " << student.getFname() << " UID: " << student.getUid() << endl;
+    return os;
+}
