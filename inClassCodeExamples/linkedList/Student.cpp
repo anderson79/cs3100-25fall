@@ -6,7 +6,7 @@
  * This file contains the definition/implementation of the student class.
  */
 
-#include "student.h" // the compiler needs to know everything about the member
+#include "Student.h" // the compiler needs to know everything about the member
 // variables and functions for Student in order to use them
 // so we include the class declaration here
 
@@ -19,10 +19,11 @@ using namespace std;
  * For this constructor the member variables are initialized
  * inside the constructor body
  */
-Student::Student() {
-    fname = "NO";
-    lname = "NAME";
-    uid = -1;
+Student::Student(): Student("INVALID", "NAME", -1) {
+    // fname = "NO";
+    // lname = "NAME";
+    // uid = -1;
+    // gradeListHead = nullptr;
 }
 
 /**
@@ -38,7 +39,9 @@ Student::Student() {
  */
 Student::Student(string fname, string lname, size_t uid)
     : fname(fname),
-      lname(lname) {
+      lname(lname),
+        gradeListHead(nullptr)
+{
     setUid(uid);
 }
 
@@ -46,7 +49,7 @@ string Student::getFname() const {
     // fname = "DIFFERENT NAME";   // since getFname is const, we cannot modify any member
     // variables inside this method
 
-    // setUid("DIFFERENT NAME");  // we cannot call any methods not labeled as const either
+    // setUid(987654);  // we cannot call any methods not labeled as const either
     return fname;
 }
 
@@ -89,10 +92,34 @@ void Student::setLname(string newLname) {
  * @param newUid the new uid
  */
 void Student::setUid(size_t newUid) {
-    if (newUid <= MAX_UID) {
+    if (newUid <= MAX_UID) { // keep user from assignning an invalid UID
         uid = newUid;
     } else {
-        uid = -1;
+        uid = -1; // if user tries an invalid UID, set it to -1 so we know
+    }
+}
+
+/**
+ * addGrade
+ * add the new grade to the end of the node
+ * @param newGrade
+ */
+void Student::addGrade(char newGrade) {
+    GradeNode* newNodePtr;
+    newNodePtr = new GradeNode; // allocate memory for the new node
+
+    newNodePtr->grade = newGrade; // put the grade in the new node
+    //(*newNodePtr).grade = newGrade; // does the same thing as above, just more complicated syntax
+
+    newNodePtr->next = nullptr; // clear next pointer so not pointing to garbage
+
+    // when head is null, the list is emtpy, so make head point to first node
+    if (gradeListHead == nullptr) { // !gradeListHead
+        gradeListHead = newNodePtr;
+    } else {
+        // get a temp pointer to head
+        GradeNode* current = gradeListHead;
+        //current->next != nullptr
     }
 }
 

@@ -10,6 +10,7 @@
 #ifndef CLASSES_STUDENT_H
 #define CLASSES_STUDENT_H
 // your code goes here
+#include "GradeNode.h"
 
 #include <string>
 using namespace std;
@@ -19,6 +20,7 @@ private:
     string fname;
     string lname;
     size_t uid; // size_t == unsigned long long
+    GradeNode* gradeListHead;
 
 public:
     // default constructor
@@ -42,6 +44,9 @@ public:
     void setFname(string newFname);
     void setLname(string newLname);
     void setUid(size_t newUid);
+
+    // list methods
+    void addGrade(char newGrade);
 
     // methods to print/output the student as a string
     void printStudent() const;
