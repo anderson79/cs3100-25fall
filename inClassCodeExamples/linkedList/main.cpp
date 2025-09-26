@@ -1,3 +1,12 @@
+/**
+ * main.cpp
+ * linkedList demo code
+ * CS 3100
+ *
+ * This project demos a simple linked list, implemented in the Student class, which
+ * stores the student's grades as chars. This file contains test functions for adding grades,
+ * checking for memory leaks, and testing copies
+ */
 #include "Student.h"
 #include <iostream>
 
@@ -18,7 +27,9 @@ void testForMemLeakCopy();
 void testForMemLeakAssign();
 
 int main() {
-    testAddGrade();
+    // uncomment which test you want to run
+
+    // testAddGrade();
 
     // testForMemLeak();
 
@@ -31,6 +42,7 @@ int main() {
     return 0;
 }
 
+// test if we can add grades to the Student's grade list
 void testAddGrade() {
     Student addTest("Add", "Test", 2342);
 
@@ -49,6 +61,7 @@ void testAddGrade() {
     cout << endl;
 }
 
+// test the Student copy constructor
 void testCopy() {
     Student copyTest("Copy", "Test", 2342);
 
@@ -66,7 +79,7 @@ void testCopy() {
     cout << endl;
 }
 
-
+// test the Student's assignment operator
 void testAssign() {
     Student assignTest("Assign", "Test", 2342);
 
@@ -85,8 +98,7 @@ void testAssign() {
     cout << endl;
 
 
-    //anotherStud = assignTest;
-
+    anotherStud = assignTest;
 
     cout << "in testAssign(), after assignment:" << endl;
     cout << "Student assignTest:" << endl;
@@ -108,7 +120,7 @@ void testAssign() {
     cout << endl;
 }
 
-
+// test the Student class for memory leaks
 void testForMemLeak() {
     cout << "in testForMemLeak():" << endl;
     cout << "Before memory leak test loop..." << endl;
@@ -127,6 +139,7 @@ void testForMemLeak() {
     cout << endl;
 }
 
+// test if the copy constructor results in any memory leaks
 void testForMemLeakCopy() {
     cout << "in testForMemLeakCopy()" << endl;
     cout << "Before memory leak test loop..." << endl;
@@ -145,6 +158,7 @@ void testForMemLeakCopy() {
     cout << endl;
 }
 
+// test if the assignment operator results in any memory leaks
 void testForMemLeakAssign() {
     cout << "in testForMemLeakAssign():" << endl;
     cout << "Before memory leak test loop..." << endl;
@@ -171,6 +185,10 @@ void testForMemLeakAssign() {
     cout << endl;
 }
 
+// helper function to add some grades to the Student that was passed in
+// The student is passed by value, meaning all the member variables are
+// copied from the original one to the local parameter
+// If we implement the copy constructor, it will be used to do the copy
 void addSomeGrades(Student stud) {
     stud.addGrade('C');
     stud.addGrade('A');

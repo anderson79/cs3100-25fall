@@ -16,7 +16,7 @@
 using namespace std;
 
 class Student {
-private:
+public:
     string fname;
     string lname;
     size_t uid; // size_t == unsigned long long
@@ -32,15 +32,15 @@ public:
     Student(string fname, string lname, size_t uid);
 
     // TODO comment this
-    // copy constructor
-    // Student(const Student& other);
+    // copy constructor - can make deep copy
+    Student(const Student& other);
     // assignment operator
-    // Student& operator=(const Student& other);
-    // destructor
-    // ~Student();
+    Student& operator=(const Student& other);
+    // destructor / deconstructor
+    ~Student();
 
     // getters
-    // the const qualifyer after the method name means
+    // the const qualifier after the method name means
     // the method cannot modify any of the member variables
     // of the class
     // in addition, const methods can only call other
@@ -71,8 +71,10 @@ public:
 
     void printGrades(ostream &os) const;
 
+    // equality operator
     bool operator==(const Student &other) const;
 
+    // string insertion operator
     friend ostream &operator<<(ostream &os, const Student &student);
 
     // constant used to verify UID is being set to a valid
