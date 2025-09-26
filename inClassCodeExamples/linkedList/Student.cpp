@@ -19,7 +19,7 @@ using namespace std;
  * For this constructor the member variables are initialized
  * inside the constructor body
  */
-Student::Student(): Student("INVALID", "NAME", -1) {
+Student::Student() : Student("INVALID", "NAME", -1) {
     // fname = "NO";
     // lname = "NAME";
     // uid = -1;
@@ -40,9 +40,24 @@ Student::Student(): Student("INVALID", "NAME", -1) {
 Student::Student(string fname, string lname, size_t uid)
     : fname(fname),
       lname(lname),
-        gradeListHead(nullptr)
-{
+      gradeListHead(nullptr) {
     setUid(uid);
+}
+
+// Student::Student(const Student& other) : Student(other.getFname(), other.getLname(), other.getUid()) {
+// TODO
+// }
+
+// Student& Student::operator=(const Student& other) {
+// TODO
+// }
+
+// Student::~Student() {
+// TODO
+// }
+
+void Student::clearList() {
+    // TODO
 }
 
 string Student::getFname() const {
@@ -92,7 +107,8 @@ void Student::setLname(string newLname) {
  * @param newUid the new uid
  */
 void Student::setUid(size_t newUid) {
-    if (newUid <= MAX_UID) { // keep user from assignning an invalid UID
+    if (newUid <= MAX_UID) {
+        // keep user from assignning an invalid UID
         uid = newUid;
     } else {
         uid = -1; // if user tries an invalid UID, set it to -1 so we know
@@ -105,7 +121,7 @@ void Student::setUid(size_t newUid) {
  * @param newGrade
  */
 void Student::addGrade(char newGrade) {
-    GradeNode* newNodePtr;
+    GradeNode *newNodePtr;
     newNodePtr = new GradeNode; // allocate memory for the new node
 
     newNodePtr->grade = newGrade; // put the grade in the new node
@@ -114,20 +130,45 @@ void Student::addGrade(char newGrade) {
     newNodePtr->next = nullptr; // clear next pointer so not pointing to garbage
 
     // when head is null, the list is emtpy, so make head point to first node
-    if (gradeListHead == nullptr) { // !gradeListHead
+    if (gradeListHead == nullptr) {
+        // !gradeListHead
         gradeListHead = newNodePtr;
     } else {
         // get a temp pointer to head
-        GradeNode* current = gradeListHead;
+        GradeNode *current = gradeListHead;
         //current->next != nullptr
     }
 }
+
+// a complete version of addGrade(char)
+// void Student::addGrade(char newGrade) {
+//     GradeNode* newNodePtr;
+//     newNodePtr = new GradeNode; // allocate memory for the new node
+//
+//     newNodePtr->grade = newGrade; // put the grade in the new node
+//     //(*newNodePtr).grade = newGrade; // does the same thing as above, just more complicated syntax
+//
+//     newNodePtr->next = nullptr; // clear next pointer so not pointing to garbage
+//
+//     // when head is null, the list is emtpy, so make head point to first node
+//     if (gradeListHead == nullptr) { // !gradeListHead
+//         gradeListHead = newNodePtr;
+//     } else {
+//         // get a temp pointer to head
+//         GradeNode* current = gradeListHead;
+//         while (current->next != nullptr) {
+//             current = current->next;
+//         }
+//         current->next = newNodePtr;
+//     }
+// }
 
 /**
  * this print student prints directly to cout
  */
 void Student::printStudent() const {
-    cout << getLname() << ", " << getFname() << " UID: " << getUid() << endl;
+    //cout << getLname() << ", " << getFname() << " UID: " << getUid() << endl;
+    printStudent(cout);
 }
 
 /**
@@ -141,11 +182,21 @@ void Student::printStudent(ostream &os) const {
     os << getLname() << ", " << getFname() << " UID: " << getUid() << endl;
 }
 
-bool Student::operator==(const Student& other) const {
+void Student::printGrades() const {
+    printGrades(cout);
+}
+
+void Student::printGrades(ostream &os) const {
+    // TODO
+}
+
+bool Student::operator==(const Student &other) const {
     return getUid() == other.getUid();
 }
 
-ostream& operator<<(ostream& os, const Student& student) {
-    os << student.getLname() << ", " << student.getFname() << " UID: " << student.getUid() << endl;
+ostream &operator<<(ostream &os, const Student &student) {
+    student.printStudent(os);
+    student.printGrades(os);
+
     return os;
 }

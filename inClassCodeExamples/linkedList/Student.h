@@ -20,7 +20,9 @@ private:
     string fname;
     string lname;
     size_t uid; // size_t == unsigned long long
-    GradeNode* gradeListHead;
+    GradeNode *gradeListHead;
+
+    void clearList();
 
 public:
     // default constructor
@@ -28,6 +30,14 @@ public:
 
     // parameterized constructor
     Student(string fname, string lname, size_t uid);
+
+    // TODO comment this
+    // copy constructor
+    // Student(const Student& other);
+    // assignment operator
+    // Student& operator=(const Student& other);
+    // destructor
+    // ~Student();
 
     // getters
     // the const qualifyer after the method name means
@@ -37,12 +47,16 @@ public:
     // methods that are labeled const, since those are
     // the only ones guaranteed not to modify the object
     string getFname() const;
+
     string getLname() const;
+
     size_t getUid() const;
 
     // setters
     void setFname(string newFname);
+
     void setLname(string newLname);
+
     void setUid(size_t newUid);
 
     // list methods
@@ -50,11 +64,16 @@ public:
 
     // methods to print/output the student as a string
     void printStudent() const;
-    void printStudent(ostream& os) const;
 
-    bool operator==(const Student& other) const;
+    void printStudent(ostream &os) const;
 
-    friend ostream& operator<<(ostream& os, const Student& student);
+    void printGrades() const;
+
+    void printGrades(ostream &os) const;
+
+    bool operator==(const Student &other) const;
+
+    friend ostream &operator<<(ostream &os, const Student &student);
 
     // constant used to verify UID is being set to a valid
     // uid with a maximum of 8 digits
