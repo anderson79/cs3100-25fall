@@ -292,9 +292,24 @@ bool Student::operator==(const Student &other) const {
  * @param student the Student being output
  * @return the ostream that was passed in
  */
-ostream &operator<<(ostream &os, const Student &student) {
+ostream& operator<<(ostream &os, const Student &student) {
     student.printStudent(os);
     student.printGrades(os);
-
     return os;
+}
+
+/**
+ * operator[]
+ * This is just a demonstration of using the bracket operator
+ * The parameter position is printed, which is the value inside
+ * the brackets when we use them.
+ * Returning a referene lets us modify the variable that gets returned
+ * In this case, we return the grade in the head node, so this would
+ * only just modify the head of the list
+ * @param position parameter passed in using brackets
+ * @return a reference to the grade in the head node
+ */
+char& Student::operator[](size_t position) {
+    cout << "position: " << position;
+    return gradeListHead->grade;
 }

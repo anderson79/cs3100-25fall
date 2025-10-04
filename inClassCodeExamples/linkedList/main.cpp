@@ -26,6 +26,8 @@ void testForMemLeakCopy();
 
 void testForMemLeakAssign();
 
+void testBracketOp();
+
 int main() {
     // uncomment which test you want to run
 
@@ -39,7 +41,25 @@ int main() {
     //testForMemLeakCopy();
     //testForMemLeakAssign();
 
+    testBracketOp();
+
     return 0;
+}
+
+void testBracketOp() {
+    Student s1;
+
+    s1.addGrade('X');
+    s1.addGrade('Y');
+    s1.addGrade('Z');
+    cout << s1 << endl << endl; // grades should be X, Y, Z
+
+    s1[4] = 'A'; // call operator[], passing in 4, and place 'A' in the return reference
+    cout << endl << s1 << endl; // grades should be A, Y, Z
+    cout << endl;
+
+    s1.operator[](4) = 'B'; // this is just the expanded syntax for s1[4] = 'B'
+    cout << endl << s1 << endl; // grades should be B, Y, Z
 }
 
 // test if we can add grades to the Student's grade list
@@ -55,6 +75,7 @@ void testAddGrade() {
     addTest.addGrade('C');
     addTest.addGrade('A');
     addTest.addGrade('D');
+
 
     cout << "in testAddGrade():" << endl;
     cout << addTest << endl;

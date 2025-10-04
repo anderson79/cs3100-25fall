@@ -77,9 +77,21 @@ public:
     // string insertion operator
     friend ostream &operator<<(ostream &os, const Student &student);
 
+    // demo of using operator[]
+    // when you use this, it looks like
+    // student[index];
+    // this method gets called, and the index is passed in as position
+    // we return a reference to a char, which means if we do
+    // student[index] = 'A';
+    // since that is a reference, it will put 'A' into the variable we return
+    // from this method
+    char& operator[](size_t position);
+
     // constant used to verify UID is being set to a valid
     // uid with a maximum of 8 digits
     const size_t MAX_UID = 99999999;
 };
 
+//ostream &operator<<(ostream &os, const Student &student);
+//bool operator==(const Student& s1, const Student& s2);
 #endif //CLASSES_STUDENT_H
